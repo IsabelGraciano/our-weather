@@ -18,6 +18,8 @@ module.exports = {
     'react'
   ],
   rules: {
-    'react/react-in-jsx-scope': 'off'
+    'react/react-in-jsx-scope': 'off',
+    '@typescript-eslint/await-thenable': 'off',
+    '@typescript-eslint/no-misused-promises': 'off'
   }
 }

@@ -1,15 +1,19 @@
-import React, { useEffect, useState } from 'react'
 import SearchBar from './searchBar'
 import CardWeatherDay from './cardWeatherDay'
-import { debounce } from 'lodash'
+import { useState } from 'react'
 
 function SideBar (): JSX.Element {
-  const [data, setData] = useState([])
+  const [citiesResult, setCititesResult] = useState<any[]>([])
+
+  const handlecitiesResultChange = (newcitiesResult: any[]): void => {
+    setCititesResult(newcitiesResult)
+  }
 
   return (
     <div className='relative'>
       <div className="h-full w-80 backdrop-blur-[15px] bg-[#ffffff33] absolute top-0 left-0 z-2 items-center p-16 border-[#d9d9d9] border-solid border-2 rounded-lg flex flex-col justify-between">
-        <SearchBar/>
+        <SearchBar onSearchTextChange={handlecitiesResultChange} />
+        -----------{citiesResult}
         <p className='light-gray-text font-sans'>Medellín, Colombia</p>
         <p className='light-gray-text font-sans'>Mar 20, 2023</p>
         <p>20 +/- 3</p>
