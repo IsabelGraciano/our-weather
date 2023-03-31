@@ -54,7 +54,7 @@ function SideBar (): JSX.Element {
           <CardWeatherDay city={selectedCity} />
         </div>
       </div>
-      <div className="h-screen bg-cover bg-center bg-fixed" style={{ backgroundImage: "url('../../public/imgs/cloudy.jpg')" }}></div>
+      <div className="h-screen bg-cover bg-center bg-fixed" style={{ backgroundImage: "url('/imgs/cloudy.jpg')" }}></div>
 
     </div>
   )
