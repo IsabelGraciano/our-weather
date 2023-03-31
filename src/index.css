@@ -12,6 +12,16 @@
     color: #D9D9D9;
 }
 
+@media (min-width: 768px) {
+    .lg-wd {
+        width: 20rem;
+    }
+
+    .lg-hg {
+        width: 20rem;
+    }
+}
+
 /* 
 font-family: 'Open Sans', sans-serif;
 font-family: 'Playfair Display', serif;

@@ -1,59 +1,38 @@
-import { formatDate } from '../functions/formatDate'
+import { formatDate } from "../functions/formatDate"
 
 interface Props {
-  weatherData: Array<Record<string, unknown>>
+  weatherData: Record<string, any>
 }
 
 function CurrentWeatherInfo ({ weatherData }: Props): JSX.Element {
-  const getDate = (): string => {
+  const data = (): Record<string, any> => {
     if (weatherData.length !== 0) {
-      console.log('weatherData', weatherData)
-      return formatDate(weatherData.list[0].dt_txt)
+      const data = {
+        name: `${weatherData.location.name}, ${weatherData.location.country}`,
+        date: weatherData.current.last_updated,
+        temp: weatherData.current.temp_c,
+        feels_like: weatherData.current.feelslike_c,
+        wind_speed: weatherData.current.wind_mph,
+        humidity: weatherData.current.humidity
+      }
+      return data
     }
-    return ''
-  }
-
-  const getTemp = (): string => {
-    if (weatherData.length !== 0) {
-      return weatherData.main.temp
-    }
-    return ''
-  }
-
-  const getFeelsLike = (): string => {
-    if (weatherData.length !== 0) {
-      return weatherData.main.feels_like
-    }
-    return ''
-  }
-
-  const getWindSpeed = (): string => {
-    if (weatherData.length !== 0) {
-      return weatherData.wind.speed
-    }
-    return ''
-  }
-
-  const getHumidity = (): string => {
-    if (weatherData.length !== 0) {
-      return weatherData.main.humidity
-    }
-    return ''
+    return {}
   }
 
   return (
     <>
-      <p className='light-gray-text font-sans'>{weatherData.name}, {weatherData.state}</p>
-      <p className='light-gray-text font-sans'>{ getDate() }</p>
-      <p>{getTemp()}</p>
-      <p>{getFeelsLike()}</p>
+      <div>
+        <p className='dark-gray-text font-sans text-4xl font-bold'>{data().name}</p>
+        <p className='dark-gray-text font-sans text-3xl font-semibold'>{formatDate(data().date)}</p>
+      </div>
+      <p><strong>Temperature:</strong> {data().temp}°</p>
+      <p><strong>Feels like:</strong> {data().feels_like}°</p>
       <div className='flex flex-row'>
-        <p>{getWindSpeed()}</p>
-        <p>Wind: WSW 6mph</p>
+        <p><strong>Wind speed:</strong> {data().wind_speed}mph</p>
       </div>
       <div className='flex flex-row'>
-        <p>{getHumidity()}</p>
-        <p>Humidity</p>
+        <p><strong>Humidity:</strong> {data().humidity}%</p>
       </div>
     </>
   )

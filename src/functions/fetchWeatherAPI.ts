@@ -1,25 +1,25 @@
-const APIKey = '9a0f8ade471fd4fe88d7bc22d34debde'
+const APIKey = 'fc9ffb92a4fd4dfabfb231918233003'
 
-async function searchCity (city: string): Promise<any[]> {
-  const response = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${APIKey}`)
+async function searchCitiesList (city: string): Promise<any[]> {
+  const response = await fetch(`http://api.weatherapi.com/v1/search.json?key=${APIKey}&q=${city}`)
   const cityInfo = await response.json()
   return cityInfo
 }
 
-async function getForecastWeather (lat: number, lon: number): Promise<any[]> {
-  const response = await fetch(`http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${APIKey}`)
-  const weather = await response.json()
-  return weather
+async function searchSpecificCity (city: string): Promise<any[]> {
+  const response = await fetch(`http://api.weatherapi.com/v1/current.json?key=${APIKey}&q=${city}`)
+  const cityInfo = await response.json()
+  return cityInfo
 }
 
-async function getCurrentWeather (lat: number, lon: number): Promise<any[]> {
-  const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${APIKey}`)
+async function getForecastWeather (city: string): Promise<any[]> {
+  const response = await fetch(`http://api.weatherapi.com/v1/forecast.json?key=${APIKey}&q=${city}&days=6`)
   const weather = await response.json()
-  return weather
+  return weather.forecast.forecastday
 }
 
 export {
-  searchCity,
-  getForecastWeather,
-  getCurrentWeather
+  searchCitiesList,
+  searchSpecificCity,
+  getForecastWeather
 }

@@ -1,5 +1,5 @@
 function formatDate (dateToFormat: Date): string {
-  const months = {
+  const months: Record<number, string> = {
     1: 'Jan',
     2: 'Feb',
     3: 'Mar',
@@ -15,7 +15,7 @@ function formatDate (dateToFormat: Date): string {
   }
   const date = new Date(dateToFormat)
   const day = date.getDate()
-  const month = date.getMonth() + 1
+  const month: number = date.getMonth() + 1
   const year = date.getFullYear()
 
   return `${day} ${months[month]}, ${year}`
