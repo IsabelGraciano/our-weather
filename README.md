@@ -3,4 +3,7 @@
 - [x] Añadir Eslint -> npx eslint --init -> (Options: check syntac, find problems and enforce code style / JS modules)
 - [x] Use Tailwind -> npm install -D tailwindcss@latest postcss@latest autoprefixer@latest -> npx tailwindcss init
 
+## Deployed at
+https://main--our-weather-checker.netlify.app/
+
 ![Alt Text](./gif_results.gif)
