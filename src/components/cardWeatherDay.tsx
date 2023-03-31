@@ -7,7 +7,7 @@ interface Props {
 }
 
 function CardWeatherDay ({ city }: Props): JSX.Element {
-  const [forecastData, setForecastData] = useState([])
+  const [forecastData, setForecastData] = useState<any[]>([])
 
   useEffect(() => {
     const fetchForecastData = async (): Promise<void> => {
@@ -16,7 +16,6 @@ function CardWeatherDay ({ city }: Props): JSX.Element {
         return
       }
       const forecast = await getForecastWeather(city)
-      console.log('forecast', forecast)
       setForecastData(forecast)
     }
     void fetchForecastData()

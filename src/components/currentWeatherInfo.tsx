@@ -1,4 +1,4 @@
-import { formatDate } from "../functions/formatDate"
+import { formatDate } from '../functions/formatDate'
 
 interface Props {
   weatherData: Record<string, any>
